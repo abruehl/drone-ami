@@ -1,0 +1,5 @@
+- file: name=/etc/drone mode=0750 owner=root group=root state=directory
+- file: name=/var/lib/conveyor mode=0750 owner=root group=root state=directory
+- template: src=etc/init/drone.conf dest=/etc/init/drone.conf
+- template: src=usr/bin/drone dest=/usr/bin/drone mode=0770
+- service: name=drone enabled=true

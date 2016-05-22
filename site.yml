@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - common
+    - cf-tools
+    - docker
+    - datadog
+    - drone

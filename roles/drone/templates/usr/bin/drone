@@ -1,0 +1,11 @@
+#!/bin/bash
+
+version=$(cat /etc/drone/version)
+
+exec /usr/bin/docker run \
+    --name drone \
+    --env-file /etc/drone/dronerc \
+    --volume /var/lib/drone:/var/lib/drone \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --env STATS=dogstatsd://$(hostname):8125 \
+    --publish 8000:8000 {{ drone_image }}:$version
